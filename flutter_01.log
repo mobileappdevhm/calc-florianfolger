@@ -1,0 +1,79 @@
+Flutter crash report; please file at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter run
+
+## exception
+
+RangeError: RangeError (index): Invalid value: Valid value range is empty: 0
+
+```
+#0      List.[] (dart:core-patch/dart:core/growable_array.dart:141)
+#1      List.removeAt (dart:core-patch/dart:core/growable_array.dart:27)
+#2      PackageMap.uriForPackage (package:flutter_tools/src/dart/package_map.dart:49)
+#3      DartDependencySetBuilder.build (package:flutter_tools/src/dart/dependencies.dart:78)
+#4      HotRunner._refreshDartDependencies (package:flutter_tools/src/run_hot.dart:85)
+#5      HotRunner.run (package:flutter_tools/src/run_hot.dart:208)
+<asynchronous suspension>
+#6      RunCommand.runCommand (package:flutter_tools/src/commands/run.dart:345)
+<asynchronous suspension>
+#7      FlutterCommand.verifyThenRunCommand (package:flutter_tools/src/runner/flutter_command.dart:290)
+<asynchronous suspension>
+#8      FlutterCommand.run (package:flutter_tools/src/runner/flutter_command.dart:228)
+<asynchronous suspension>
+#9      CommandRunner.runCommand (package:args/command_runner.dart:194)
+<asynchronous suspension>
+#10     FlutterCommandRunner.runCommand (package:flutter_tools/src/runner/flutter_command_runner.dart:286)
+<asynchronous suspension>
+#11     CommandRunner.run.<anonymous closure> (package:args/command_runner.dart:109)
+#12     new Future.sync (dart:async/future.dart:222)
+#13     CommandRunner.run (package:args/command_runner.dart:109)
+#14     FlutterCommandRunner.run (package:flutter_tools/src/runner/flutter_command_runner.dart:166)
+#15     run.<anonymous closure> (package:flutter_tools/runner.dart:90)
+<asynchronous suspension>
+#16     AppContext._run (package:flutter_tools/src/base/context.dart:76)
+<asynchronous suspension>
+#17     AppContext.runInZone.<anonymous closure> (package:flutter_tools/src/base/context.dart:66)
+#18     _rootRun (dart:async/zone.dart:1126)
+#19     _CustomZone.run (dart:async/zone.dart:1023)
+#20     runZoned (dart:async/zone.dart:1501)
+#21     AppContext.runInZone (package:flutter_tools/src/base/context.dart:65)
+#22     run (package:flutter_tools/runner.dart:61)
+<asynchronous suspension>
+#23     main (package:flutter_tools/executable.dart:48)
+<asynchronous suspension>
+#24     main (file:///C:/Users/Florian/flutter/packages/flutter_tools/bin/flutter_tools.dart:16)
+#25     _startIsolate.<anonymous closure> (dart:isolate-patch/dart:isolate/isolate_patch.dart:277)
+#26     _RawReceivePortImpl._handleMessage (dart:isolate-patch/dart:isolate/isolate_patch.dart:165)
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel beta, v0.1.5, on Microsoft Windows [Version 10.0.16299.309], locale de-DE)
+    • Flutter version 0.1.5 at C:\Users\Florian\flutter
+    • Framework revision 3ea4d06340 (4 weeks ago), 2018-02-22 11:12:39 -0800
+    • Engine revision ead227f118
+    • Dart version 2.0.0-dev.28.0.flutter-0b4f01f759
+
+[✓] Android toolchain - develop for Android devices (Android SDK 27.0.3)
+    • Android SDK at C:\Users\Florian\AppData\Local\Android\sdk
+    • Android NDK location not configured (optional; useful for native profiling support)
+    • Platform android-27, build-tools 27.0.3
+    • Java binary at: C:\Program Files\Android\Android Studio\jre\bin\java
+    • Java version OpenJDK Runtime Environment (build 1.8.0_152-release-915-b01)
+
+[✓] Android Studio (version 3.0)
+    • Android Studio at C:\Program Files\Android\Android Studio
+    • Java version OpenJDK Runtime Environment (build 1.8.0_152-release-915-b01)
+
+[✓] VS Code (version 1.21.1)
+    • VS Code at C:\Program Files\Microsoft VS Code
+    • Dart Code extension version 2.10.0
+
+[✓] Connected devices (1 available)
+    • Android SDK built for x86 64 • emulator-5554 • android-x64 • Android 7.1.1 (API 25) (emulator)
+
+• No issues found!
+```
