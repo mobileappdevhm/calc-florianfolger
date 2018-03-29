@@ -24,7 +24,7 @@ class CalcLayout extends StatelessWidget {
       appBar:new AppBar(
         title:new Text("Calculator")
       ),
-      // building the body for my calculator app
+      // building the layout for my calculator app
       body: new Column(
         children: <Widget>[
           // upperside
@@ -40,12 +40,9 @@ class CalcLayout extends StatelessWidget {
                   // pixel error on the display
                   new Expanded(
                     child: new SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
+                      scrollDirection: Axis.vertical,
                     child: new Text(
                     mainState.inputValue ?? '0',
-                    overflow: TextOverflow.clip,
-                    maxLines: 2,
-                    softWrap: true,
                     style: new TextStyle(
                       // text color, size and weight
                       color: Colors.black,
@@ -139,7 +136,7 @@ class CalcState extends State<Calculator> {
         break;
       case ".":
         op = keyValue;
-        value = '';
+        value = "";
         setState(() => testString += ".");
       break;
       case "/":
@@ -162,20 +159,21 @@ class CalcState extends State<Calculator> {
                 testString = (prevValue / double.parse(value)).toStringAsFixed(2);
                 break;
               case "x":
-              testString = (prevValue * double.parse(value)).toStringAsFixed(2);
+                testString = (prevValue * double.parse(value)).toStringAsFixed(2);
                 break;
               case "-":
-              testString = (prevValue - double.parse(value)).toStringAsFixed(2);
+                testString = (prevValue - double.parse(value)).toStringAsFixed(2);
                 break;
               case "+":
-              testString = (prevValue + double.parse(value)).toStringAsFixed(2);
+                testString = (prevValue + double.parse(value)).toStringAsFixed(2);
                 break;
               case "%":
-              testString = (prevValue % double.parse(value)).toStringAsFixed(2);
+                testString = (prevValue % double.parse(value)).toStringAsFixed(2);
+                break;
             }
           });
           op = null;
-          // prevValue = double.parse(testString);
+          prevValue = double.parse(testString);
           value = '';
           break;
         }
