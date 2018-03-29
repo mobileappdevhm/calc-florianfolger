@@ -107,6 +107,7 @@ class CalcState extends State<Calculator> {
   String value = "";
   String op = 'a';
 
+  // alternative method for operator
   bool isNumber(String str) {
     if(str == null) {
       return false;
@@ -128,7 +129,6 @@ class CalcState extends State<Calculator> {
       case "<":
         op = null;
         value = "";
-        prevValue = double.parse(testString);
         if(testString.length > 1) {
           value = testString.substring(0, testString.length - 1);
           setState(() => testString = value);
@@ -140,13 +140,13 @@ class CalcState extends State<Calculator> {
       case ".":
         op = keyValue;
         value = '';
-        prevValue = double.parse(testString);
         setState(() => testString += ".");
       break;
       case "/":
       case "x":
       case "-":
       case "+":
+      case "%":
         op = keyValue;
         value = '';
         prevValue = double.parse(testString);
@@ -162,24 +162,24 @@ class CalcState extends State<Calculator> {
                 testString = (prevValue / double.parse(value)).toStringAsFixed(2);
                 break;
               case "x":
-              testString = (prevValue * double.parse(value)).toStringAsFixed(0);
+              testString = (prevValue * double.parse(value)).toStringAsFixed(2);
                 break;
               case "-":
-              testString = (prevValue - double.parse(value)).toStringAsFixed(0);
+              testString = (prevValue - double.parse(value)).toStringAsFixed(2);
                 break;
               case "+":
-              testString = (prevValue + double.parse(value)).toStringAsFixed(0);
+              testString = (prevValue + double.parse(value)).toStringAsFixed(2);
                 break;
+              case "%":
+              testString = (prevValue % double.parse(value)).toStringAsFixed(2);
             }
           });
           op = null;
-          prevValue = double.parse(testString);
+          // prevValue = double.parse(testString);
           value = '';
           break;
         }
       break;
-      // no function
-      case "%":
       default: 
         if(isNumber(keyValue)) {
           // testing if an operator was set
