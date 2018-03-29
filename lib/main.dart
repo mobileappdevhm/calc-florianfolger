@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
@@ -38,13 +36,21 @@ class CalcLayout extends StatelessWidget {
               child: new Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  new Text(
+                  new Expanded(
+                    child: new SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                    child: new Text(
                     mainState.inputValue ?? '0',
+                    overflow: TextOverflow.clip,
+                    maxLines: 2,
+                    softWrap: true,
                     style: new TextStyle(
                       // text color, size and weight
                       color: Colors.black,
                       fontWeight: FontWeight.w700,
                       fontSize: 48.0,
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -120,16 +126,19 @@ class CalcState extends State<Calculator> {
         op = null;
         value = "";
         prevValue = double.parse(testString);
-        for(int i = 0; i < testString.length; i++) {
-          String str = testString.substring(0, i) + testString.substring(i + 1);
+        if(testString.length > 1) {
+          String str = testString.substring(0, testString.length - 1);
           setState(() => testString = str);
+        } else {
+          String str2 = testString.substring(0, testString.length - 1);
+          setState(() => testString = str2);
         }
         break;
       case ".":
         op = keyValue;
         value = '';
         prevValue = double.parse(testString);
-        setState(() => testString = (testString + ".").toString());
+        setState(() => testString += (testString + "."));
       break;
       case "/":
       case "x":
