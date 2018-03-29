@@ -36,6 +36,8 @@ class CalcLayout extends StatelessWidget {
               child: new Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
+                  // solved the problem that too much digits added to the teststring is running into a 
+                  // pixel error on the display
                   new Expanded(
                     child: new SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
@@ -78,7 +80,7 @@ class CalcLayout extends StatelessWidget {
       )
     );
   }
-  // saving the buttons into a list and map
+  // saving the buttons into a list
   Widget createButtons (String row) {
     List<String> button = row.split("");
     return new Expanded(
@@ -122,23 +124,24 @@ class CalcState extends State<Calculator> {
         setState(() => testString = "");
         break;
       break;
+      // delete one digit
       case "<":
         op = null;
         value = "";
         prevValue = double.parse(testString);
         if(testString.length > 1) {
-          String str = testString.substring(0, testString.length - 1);
-          setState(() => testString = str);
+          value = testString.substring(0, testString.length - 1);
+          setState(() => testString = value);
         } else {
-          String str2 = testString.substring(0, testString.length - 1);
-          setState(() => testString = str2);
+          value = testString.substring(0, testString.length - 1);
+          setState(() => testString = value);
         }
         break;
       case ".":
         op = keyValue;
         value = '';
         prevValue = double.parse(testString);
-        setState(() => testString += (testString + "."));
+        setState(() => testString += ".");
       break;
       case "/":
       case "x":
