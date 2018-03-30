@@ -173,7 +173,7 @@ class CalcState extends State<Calculator> {
             }
           });
           op = null;
-          prevValue = double.parse(testString);
+          // prevValue = double.parse(testString);
           value = '';
           break;
         }
