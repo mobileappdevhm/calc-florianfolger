@@ -1,6 +1,6 @@
 # mycalculator
 
-A new Flutter project.
+Used Dart with Visual Studio Code and the emulator from Android Studio
 
 ## Getting Started
 
